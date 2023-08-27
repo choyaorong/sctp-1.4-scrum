@@ -44,7 +44,7 @@ class Permission{
             throw new Error("This class cannot be instantiated");
         }
         this.#role = role;
-        this.#operation = operation
+        this.#operation = operation;
     }
 
     // function
@@ -73,3 +73,31 @@ class Permission{
 }
 
 // Add code here
+
+class Document extends Permission {
+    #content;
+
+    constructor(role, operation,content){
+        super(role,operation);
+        this.#content = content;        
+    }
+
+    process(){
+        if(super.check()){
+            //this.#content = content;
+            console.log("Allowed");
+        }
+        else//this.#content = "";
+        console.log("Blocked");        
+    }
+
+}
+
+const d = new Document(Permission.RolesConst.EDITOR, Permission.OperationsConst.UPDATE, "Hello content")
+d.process();
+
+const e = new Document(Permission.RolesConst.READER, Permission.OperationsConst.UPDATE, "Hello content")
+e.process(); // "Blocked"
+
+const f = new Document(Permission.RolesConst.OWNER, Permission.OperationsConst.DELETE, "Hello content")
+f.process(); // "Allowed"
