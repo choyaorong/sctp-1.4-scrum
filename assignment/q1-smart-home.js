@@ -10,27 +10,27 @@
 
 class BaseSignal {
 
-    constructor(){
-        if(this.constructor.name === "BaseSignal"){
+    constructor() {
+        if (this.constructor.name === "BaseSignal") {
             throw new Error("This class cannot be instantiated");
         }
-        this.signal="";
+        this.signal = "";
     }
-    send(){
+    send() {
         console.log("Sending " + this.signal + " signal");
     }
 }
 
 class TvSignal extends BaseSignal {
-    constructor(){
+    constructor() {
         // Add code here
         super();
     }
-    signal = "tv"; 
+    signal = "tv";
 }
 
 class AirconSignal extends BaseSignal {
-    constructor(){
+    constructor() {
         // Add code here
         super();
     }
@@ -38,7 +38,7 @@ class AirconSignal extends BaseSignal {
 }
 
 class DoorSignal extends BaseSignal {
-    constructor(){
+    constructor() {
         // Add code here
         super();
     }
